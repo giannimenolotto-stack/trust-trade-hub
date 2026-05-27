@@ -1,0 +1,53 @@
+@import "tailwindcss" source(none);
+@source "../src";
+@import "tw-animate-css";
+
+@custom-variant dark (&:is(.dark *));
+
+@theme {
+  --color-background: #000000;
+  --color-foreground: #FFFFFF;
+  --color-accent: #00FF41;
+  --color-accent-foreground: #000000;
+  --color-danger: #FF3B30;
+  --color-surface: #0E0E0E;
+  --color-surface-2: #161616;
+  --color-border: #1F1F1F;
+  --color-muted: #737373;
+
+  --font-display: 'Anton', sans-serif;
+  --font-body: 'Inter', sans-serif;
+  --font-mono: 'JetBrains Mono', monospace;
+  --font-sans: 'Inter', sans-serif;
+
+  --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+@keyframes scan-shimmer {
+  0% { transform: translateX(-150%) skewX(-20deg); }
+  100% { transform: translateX(250%) skewX(-20deg); }
+}
+
+@keyframes number-up {
+  from { transform: translateY(10px); opacity: 0; }
+  to { transform: translateY(0); opacity: 1; }
+}
+
+@keyframes pulse-dot {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.4; }
+}
+
+.animate-scan { animation: scan-shimmer 2.8s infinite var(--ease-out-expo); }
+.animate-reveal { animation: number-up 0.5s var(--ease-out-expo) both; }
+.animate-pulse-dot { animation: pulse-dot 1.6s infinite; }
+
+@layer base {
+  html, body {
+    background-color: #000;
+    color: #fff;
+    font-family: 'Inter', sans-serif;
+    -webkit-font-smoothing: antialiased;
+  }
+  * { border-color: #1F1F1F; }
+}
